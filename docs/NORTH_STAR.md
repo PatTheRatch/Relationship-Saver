@@ -140,6 +140,29 @@ The user should not need to maintain a mental backlog.
 
 ---
 
+## How the User Gets Pulled In
+
+Resurfacing only works if the app reaches the user. A stack the user has to
+remember to open is a to-do list, and the product exists because the user does
+not reliably remember.
+
+The commitment is therefore:
+
+> **One calm notification per day, at a time the user chooses.**
+
+Not one per person. Not one per overdue relationship. Not a badge count that
+grows.
+
+The notification should describe the session, not the backlog. "A few people to
+catch up on" rather than "7 overdue." If the user ignores it, the next day's
+notification is identical in tone. The app does not escalate.
+
+Time-critical items (a birthday today, a follow-up the user asked to be
+reminded about at a specific time) may justify a second notification. Nothing
+else does.
+
+---
+
 ## Core Product Insight
 
 The app must separate:
@@ -482,6 +505,10 @@ Contact import may be offered as an optional convenience.
 
 A useful first version should prove that resurfacing itself changes behavior.
 
+That test is narrower than the full feature set below. The first build is
+specified separately in [V1 Scope](V1_SCOPE.md); this section describes the
+complete MVP the product is aiming at, not the first thing to be built.
+
 ### Required
 
 - manually add people,
@@ -544,6 +571,7 @@ Do not build:
 - automatic advice about whether someone is worth keeping,
 - complex AI relationship analysis,
 - automatic tone learning per person,
+- learned or suggested contact cadence,
 - deep contact import as a requirement,
 - huge dashboards,
 - exhaustive communication-channel tracking.
