@@ -83,7 +83,7 @@ Ordering, highest priority first:
 2. **Follow-ups due** — due today or overdue, oldest first.
 3. **Dates approaching** — birthdays and important dates within seven days.
 4. **Past cadence** — most overdue first.
-5. **Serendipity** — one dormant or random pick, only if slots remain.
+5. **Serendipity** — one dormant pick, only if slots remain.
 
 Rules:
 
@@ -92,23 +92,31 @@ Rules:
 - **Soft pre-overdue**: someone at roughly 80% of their cadence is eligible for
   tier 4, but only after everyone genuinely overdue has been placed. They
   surface early only when the stack is otherwise quiet.
+- **The serendipity pick has a dormancy floor.** A person must be genuinely
+  out of touch, thirty days by default, to be eligible for it. Without the
+  floor the slot surfaces whoever happens to be left over, including people
+  contacted yesterday, which is noise rather than serendipity. The cost is that
+  a session can be empty, which is the correct answer when nothing needs doing.
+  Padding the stack to look busy is how a calm tool turns into a chore.
 - A session ends when the cards run out. There is no "load more." If the user
   wants another session, the app can offer one, but it does not refill
   automatically. Small surfaces beat giant backlogs.
 
 ### What "Message" Means
 
-The app cannot confirm that a message was actually sent. Tapping **Message**
-therefore:
+Tapping **Message** opens the system composer inside the app, prefilled with
+the recipient.
 
-1. opens the native composer, prefilled where possible,
-2. **optimistically** records the interaction and resets the relationship clock,
-3. shows a brief undo affordance on return,
-4. removes the card from the session.
+Implementation revised this. `MFMessageComposeViewController` reports whether
+the user actually sent, so the app does not have to guess: the relationship
+clock resets on a confirmed send and not before. Cancelling leaves the card
+exactly as it was.
 
-Optimistic is the right default. The cost of a false positive is one slightly
-early resurface. The cost of asking "did you send it?" every time is friction
-in exactly the place where friction kills the product.
+Optimistic recording survives as the fallback, for when the device cannot send
+text or no number is on file. There the user is about to go and message the
+person somewhere else, and the cost of a false positive is one slightly early
+resurface. That is far cheaper than asking "did you send it?" every time, which
+is friction in exactly the place where friction kills the product.
 
 ### The Manual Reply Queue
 
